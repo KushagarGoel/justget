@@ -1,0 +1,109 @@
+{%extends "main/header.html"%}
+
+{% block content %}
+{% if not post %}
+<h1>No entries yet</h1>
+{% endif %}
+        {% for form in post %}
+
+                <div class="container bg-light" >
+                    <h3>Travel Details</h3>
+                        <hr>
+                        <div class="container">
+                          <div class="row">
+                            <div class="col col-lg-1" >
+                              Travel Type:
+                            </div>
+                            <div class="col-sm">
+                              {{form.travel_type}}
+                            </div>
+                            <div class="col-sm">
+                              Purpose:
+                            </div>
+                              <div class="col-sm">
+                               {{form.purpose}}
+                            </div>
+                            <div class="col-sm">
+                              Purpose Description:
+                            </div>
+                            <div class="col-sm">
+                              {{form.purpose_desc}}
+                            </div>
+                          </div>
+                        </div>
+                    <br>
+                    <h3>Itinerary Details</h3>
+                    <hr>
+                     <div class="row">
+                        <div class="col col-lg-2">
+                         Journey type:
+                        </div>
+                        <div class="col">
+                            <div class=" form-check-inline">
+                                {% for i in form.journey_type %}
+                                &nbsp;&nbsp;
+                                {{i}}
+                                {% endfor %}
+                            </div>
+                        </div>
+                      </div>
+
+            <br>
+                    <table class="table table-striped table-condensed" style="width: auto;"  >
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col" >Mode</th>
+                          <th scope="col">From Place</th>
+                          <th scope="col">To Place</th>
+                          <th scope="col">Travel Date</th>
+                          <th scope="col">ETD</th>
+                          <th scope="col">Class</th>
+                          <th scope="col">Air/Train preferences</th>
+                          <th scope="col">Booking Type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                             <td>{{form.mode}}</td>
+                             <td>{{form.from_place}}</td>
+                             <td>{{form.to_place}}</td>
+                             <td>{{form.travel_date}}</td>
+                             <td>{{form.etd}}</td>
+                             <td>{{form.classs}}</td>
+                             <td>{{form.air_train}}</td>
+                             <td>{{form.booking_type}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+            <br>
+            <h3>Advanced Details:</h3>
+            <hr>
+             <div class="row">
+                        <div class="col col-lg-2">
+                         Advance Required:
+                        </div>
+                        <div class="col">
+                            <div class=" form-check-inline">
+                                {% for i in form.advance_req %}
+                                &nbsp;&nbsp;
+                                {{i}}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+        <br>
+        <h3>Declaration:</h3>
+        <hr>
+            <p>
+                {{form.checker}} I accept the terms and condition of policy
+            </p>
+                </div>
+       <br>
+        <br>
+        <br>
+        {% endfor %}
+
+{% endblock %}
